@@ -234,6 +234,15 @@ input:checked + .toggle-btn:before {
   cursor: grabbing;
 }
 
+/*
+To Do: 
+
+- make the input in js to 2 decimal places (change 16 to 16.00) 
+- change the empty and full bar slider bg colours. 
+
+*/
+
+
 /* some learning notes: 
 the slider = the bar 
 .slider ... thumb = the button in the middle. this is where the bg img of 2 arrows + circle surrounds it is. it is the thing we drag left and right 
