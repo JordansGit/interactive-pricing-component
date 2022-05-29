@@ -1,6 +1,3 @@
-.attribution { font-size: 11px; text-align: center; position: absolute; bottom: 0; left: 0; right: 0;}
-.attribution a { color: hsl(228, 45%, 44%); }
-
 * {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
@@ -10,7 +7,7 @@
 body {
   font-size: 15px;
   background: url('../images/bg-pattern.svg') no-repeat top hsl(230, 100%, 99%);
-  background-size: 100% auto;
+  background-size: 100% 449px;
   text-align: center;
   height: 100vh;
   width: 100vw;
@@ -40,9 +37,10 @@ section {
   display: flex;
   flex-direction: column;
   background: white;
-  width: 530px;
+  max-width: 530px;
   margin: 0 auto;
   text-align: left;
+  border-radius: 10px;
 }
 
 /* SECTION TOP */ 
@@ -92,7 +90,10 @@ section {
   font-weight: 800;
   border-radius: 10px;
   padding: 2px 5px;
-  height: 15px;
+}
+
+.small {
+  display: none;
 }
 
 
@@ -109,6 +110,8 @@ ul {
   list-style-image: url('../images/icon-check.svg'); 
   padding-left: 15px;
   font-size: 13px;
+  line-height: 2.2;
+
 }
 
 button {
@@ -124,6 +127,7 @@ button:hover {
   color: white;
   cursor: pointer;
 }
+
 
 /* TOGGLE SWITCH */ 
 .toggle {
@@ -184,23 +188,17 @@ input:checked + .toggle-btn:before {
   padding: 0 50px;
 }
 
-.slider {
-  width: 100%;
-}
-
 .slider { 
   -webkit-appearance: none; /* remove default styling by broswers */ 
-
+  width: 100%;
   height: 8px; 
   border-radius: 5px;  
+  background: linear-gradient(to right, hsl(174, 77%, 80%) 48%, hsl(224, 65%, 95%) 48%, hsl(224, 65%, 95%) 100%); 
 
-  background: red;
 }
 
 .slider::-webkit-slider-thumb { /* chrome, safari, opera */  
-  -webkit-appearance: none; /* remove default styling by broswers */ 
-  appearance: none;
-
+  appearance: none; /* remove default styling by broswers */ 
   height: 40px;
   width: 40px;
   border-radius: 50%; 
@@ -209,9 +207,9 @@ input:checked + .toggle-btn:before {
 }
 
 .slider::-moz-range-thumb { /* firefox */ 
-  height: 25px;
+  height: 40px;
   border-radius: 50%; 
-  width: 25px;
+  width: 40px;
   background: url('../images/icon-slider.svg') no-repeat center hsl(174, 86%, 45%);
   cursor: pointer;
 }
@@ -234,13 +232,113 @@ input:checked + .toggle-btn:before {
   cursor: grabbing;
 }
 
-/*
-To Do: 
 
-- make the input in js to 2 decimal places (change 16 to 16.00) 
-- change the empty and full bar slider bg colours. 
+/* MEDIA QUERIES */ 
+@media only screen and (max-width: 770px) {
+  body {
+    background-size: 100% 400px;
+  }
 
-*/
+  section {
+    width: 85%;
+  }
+}
+
+
+
+@media only screen and (max-width: 500px) {
+  body {
+    font-size: 13px;
+  }
+
+  .section-top {
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+
+  .slide-container {
+    padding-left: 30px;
+    padding-right: 30px; 
+  }
+
+  .section-middle {
+    padding-left: 20px;
+    padding-right: 8%;
+    gap: 8px;
+    margin-top: 20px;
+  } 
+
+  .section-top, .section-bottom {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-bottom {
+    flex-direction: column;
+  }
+
+  .small {
+    display: block;
+  }
+  .large {
+    display: none;
+  }
+  .line-break::before {
+    content: "\a"; 
+    white-space: pre;
+    margin-top: 10px;
+  }
+  .line-break {
+    line-height: 1.8;
+  }
+
+
+
+  h1 {
+    font-size: 22px;
+  }
+  .inline span {
+    font-size: 32px;
+  }
+  .section-middle {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+  .discount {
+    font-size: 10px; 
+  }
+  .page-views {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  ul {
+    font-size: 12px; 
+    margin-top: 0;
+    text-align: center;
+    list-style-position: inside;
+  }
+
+  li:before {
+    content: "";
+    display: inline-block;
+    height: 1rem;  
+    width: .5rem;  
+  }
+
+  button {
+    margin: 20px 0 10px 0;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  .section-middle {
+    padding-right: 4%;
+  } 
+}
+
+
 
 
 /* some learning notes: 
@@ -248,4 +346,6 @@ the slider = the bar
 .slider ... thumb = the button in the middle. this is where the bg img of 2 arrows + circle surrounds it is. it is the thing we drag left and right 
   webkit... = for chrome, + others 
   -moz... = for firefox. 
+
+I don't know why using linear-gradient makes the slider bar change colour like that, but it does. so just accept this is how it's done and move on. 
 */ 
